@@ -8,18 +8,25 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class DemoViewController: UIViewController {
 
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    @IBOutlet weak var tableView: UITableView!
+    
+    private let model: IDemoModel = DemoModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        model.loadNewApps { (apps, error) in
+            apps?.forEach({ print($0.title )})
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
 }
 
