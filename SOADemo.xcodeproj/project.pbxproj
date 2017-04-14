@@ -12,7 +12,7 @@
 		98C26EF01EA0F34B00766736 /* AppleRSSRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C26EEF1EA0F34B00766736 /* AppleRSSRequest.swift */; };
 		98C26EF21EA0F3AA00766736 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C26EF11EA0F3AA00766736 /* Parser.swift */; };
 		98C26EF41EA0F3BA00766736 /* AppsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C26EF31EA0F3BA00766736 /* AppsParser.swift */; };
-		98C26EF71EA0F49C00766736 /* AppApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C26EF61EA0F49C00766736 /* AppApiModel.swift */; };
+		98C26EF91EA0F6A600766736 /* RequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C26EF81EA0F6A600766736 /* RequestSender.swift */; };
 		98E8479A1E9E18D5001972E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E847991E9E18D5001972E8 /* AppDelegate.swift */; };
 		98E847A11E9E18D5001972E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98E847A01E9E18D5001972E8 /* Assets.xcassets */; };
 		98E847A41E9E18D5001972E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98E847A21E9E18D5001972E8 /* LaunchScreen.storyboard */; };
@@ -30,7 +30,7 @@
 		98C26EEF1EA0F34B00766736 /* AppleRSSRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleRSSRequest.swift; sourceTree = "<group>"; };
 		98C26EF11EA0F3AA00766736 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		98C26EF31EA0F3BA00766736 /* AppsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppsParser.swift; sourceTree = "<group>"; };
-		98C26EF61EA0F49C00766736 /* AppApiModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppApiModel.swift; sourceTree = "<group>"; };
+		98C26EF81EA0F6A600766736 /* RequestSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestSender.swift; sourceTree = "<group>"; };
 		98E847961E9E18D5001972E8 /* SOADemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOADemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E847991E9E18D5001972E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98E847A01E9E18D5001972E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,7 +58,6 @@
 		98C26EEA1EA0EEA500766736 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				98C26EF51EA0F47B00766736 /* ApiModels */,
 				98C26EE81EA0EAF700766736 /* RequestsFactory.swift */,
 				98C26EEC1EA0EED700766736 /* Requests */,
 				98C26EEB1EA0EEB200766736 /* Parsers */,
@@ -82,14 +81,6 @@
 				98C26EEF1EA0F34B00766736 /* AppleRSSRequest.swift */,
 			);
 			name = Requests;
-			sourceTree = "<group>";
-		};
-		98C26EF51EA0F47B00766736 /* ApiModels */ = {
-			isa = PBXGroup;
-			children = (
-				98C26EF61EA0F49C00766736 /* AppApiModel.swift */,
-			);
-			name = ApiModels;
 			sourceTree = "<group>";
 		};
 		98E8478D1E9E18D5001972E8 = {
@@ -170,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				98E847C71E9F88AB001972E8 /* IRequestSender.swift */,
+				98C26EF81EA0F6A600766736 /* RequestSender.swift */,
 			);
 			name = RequestManager;
 			sourceTree = "<group>";
@@ -255,7 +247,7 @@
 				98E847C01E9E5B18001972E8 /* DemoModel.swift in Sources */,
 				98C26EEE1EA0F32100766736 /* IRequest.swift in Sources */,
 				98E847C21E9F64EC001972E8 /* ImageDiskStorage.swift in Sources */,
-				98C26EF71EA0F49C00766736 /* AppApiModel.swift in Sources */,
+				98C26EF91EA0F6A600766736 /* RequestSender.swift in Sources */,
 				98E847C41E9F6602001972E8 /* IImageStorage.swift in Sources */,
 				98E8479A1E9E18D5001972E8 /* AppDelegate.swift in Sources */,
 				98C26EE91EA0EAF700766736 /* RequestsFactory.swift in Sources */,
