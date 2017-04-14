@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DemoViewController" customModule="SOADemo" customModuleProvider="target">
+            <connections>
+                <outlet property="segmentControl" destination="g3d-dp-tng" id="jy7-xb-Txb"/>
+                <outlet property="tableView" destination="8ik-Sq-N1y" id="7L6-ub-oBX"/>
+                <outlet property="view" destination="MUO-Ay-FZN" id="pzQ-gX-X6q"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="MUO-Ay-FZN">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="g3d-dp-tng">
+                    <rect key="frame" x="8" y="32" width="359" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="j6e-rk-AWQ"/>
+                    </constraints>
+                    <segments>
+                        <segment title="New"/>
+                        <segment title="Top Paid"/>
+                        <segment title="Top Free"/>
+                    </segments>
+                    <connections>
+                        <action selector="segmentControlAction:" destination="-1" eventType="valueChanged" id="bdv-U7-FFL"/>
+                    </connections>
+                </segmentedControl>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8ik-Sq-N1y">
+                    <rect key="frame" x="0.0" y="68" width="375" height="599"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="g3d-dp-tng" firstAttribute="top" secondItem="MUO-Ay-FZN" secondAttribute="top" constant="32" id="KeC-RC-KOb"/>
+                <constraint firstAttribute="trailing" secondItem="8ik-Sq-N1y" secondAttribute="trailing" id="L18-LU-ero"/>
+                <constraint firstItem="8ik-Sq-N1y" firstAttribute="top" secondItem="g3d-dp-tng" secondAttribute="bottom" constant="8" id="NNb-Ev-UJ3"/>
+                <constraint firstAttribute="bottom" secondItem="8ik-Sq-N1y" secondAttribute="bottom" id="RLA-uG-y2W"/>
+                <constraint firstItem="g3d-dp-tng" firstAttribute="leading" secondItem="MUO-Ay-FZN" secondAttribute="leadingMargin" id="Td9-dL-AKt"/>
+                <constraint firstAttribute="trailingMargin" secondItem="g3d-dp-tng" secondAttribute="trailing" id="gnd-K1-Ak2"/>
+                <constraint firstItem="8ik-Sq-N1y" firstAttribute="leading" secondItem="MUO-Ay-FZN" secondAttribute="leading" id="m4j-co-8S3"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

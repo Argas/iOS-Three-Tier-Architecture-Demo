@@ -15,27 +15,18 @@ struct AppDisplayModel {
 }
 
 protocol IDemoModel {
-    func loadNewApps(completionHandler: @escaping ([AppDisplayModel]?, String?) -> Void)
+    func fetchNewApps(completionHandler: @escaping ([AppDisplayModel]?, String?) -> Void)
 }
 
 class DemoModel: IDemoModel {
+    let appsService:  IAppsService
     
-    let requestSender: IRequestSender = RequestSender()
+    init(appsService: IAppsService) {
+        self.appsService = appsService
+    }
     
-    func loadNewApps(completionHandler: @escaping ([AppDisplayModel]?, String?) -> Void) {
-        
-        let requestConfig: RequestConfig<[AppApiModel]> = RequestsFactory.AppleRSSRequests.newAppsConfig
-
-        requestSender.send(config: requestConfig) { (result: Result<[AppApiModel]>) in
-            
-            switch result {
-            case .Success(let apps):
-                let appDisplayModels = apps.map({ AppDisplayModel(title: $0.name, imageUrl: $0.iconUrl) })
-                completionHandler(appDisplayModels, nil)
-            case .Fail(let error):
-                completionHandler(nil, error)
-            }
-        }
+    func fetchNewApps(completionHandler: @escaping ([AppDisplayModel]?, String?) -> Void) {
+        //
     }
 
 }

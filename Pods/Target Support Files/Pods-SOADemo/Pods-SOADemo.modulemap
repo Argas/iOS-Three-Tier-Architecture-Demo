@@ -1,0 +1,6 @@
+framework module Pods_SOADemo {
+  umbrella header "Pods-SOADemo-umbrella.h"
+
+  export *
+  module * { export * }
+}
