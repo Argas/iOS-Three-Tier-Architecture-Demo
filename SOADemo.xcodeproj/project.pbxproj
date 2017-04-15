@@ -76,6 +76,7 @@
 				98E847BA1E9E5906001972E8 /* ApplicationsViewContrller */,
 			);
 			name = Modules;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		8359DBA6260BACCBC1BE1309 /* Frameworks */ = {
@@ -89,40 +90,43 @@
 		98C26EEA1EA0EEA500766736 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				98C26EE81EA0EAF700766736 /* RequestsFactory.swift */,
-				98C26EEC1EA0EED700766736 /* Requests */,
 				98C26EEB1EA0EEB200766736 /* Parsers */,
+				98C26EEC1EA0EED700766736 /* Requests */,
+				98C26EE81EA0EAF700766736 /* RequestsFactory.swift */,
 			);
 			name = Networking;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		98C26EEB1EA0EEB200766736 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
-				98C26EF11EA0F3AA00766736 /* Parser.swift */,
 				98C26EF31EA0F3BA00766736 /* AppsParser.swift */,
 				6E1E50CC1EA2789F00093243 /* LastFMTracksParser.swift */,
+				98C26EF11EA0F3AA00766736 /* Parser.swift */,
 			);
 			name = Parsers;
+			path = Parsers;
 			sourceTree = "<group>";
 		};
 		98C26EEC1EA0EED700766736 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				98C26EED1EA0F32100766736 /* IRequest.swift */,
 				98C26EEF1EA0F34B00766736 /* AppleRSSRequest.swift */,
+				98C26EED1EA0F32100766736 /* IRequest.swift */,
 				6E1E50CA1EA2199E00093243 /* LastFMTracksRequest.swift */,
 			);
 			name = Requests;
+			path = Requests;
 			sourceTree = "<group>";
 		};
 		98E8478D1E9E18D5001972E8 = {
 			isa = PBXGroup;
 			children = (
-				98E847981E9E18D5001972E8 /* SOADemo */,
-				98E847971E9E18D5001972E8 /* Products */,
-				C684598C7B674160B2F87168 /* Pods */,
 				8359DBA6260BACCBC1BE1309 /* Frameworks */,
+				C684598C7B674160B2F87168 /* Pods */,
+				98E847971E9E18D5001972E8 /* Products */,
+				98E847981E9E18D5001972E8 /* SOADemo */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,13 +141,13 @@
 		98E847981E9E18D5001972E8 /* SOADemo */ = {
 			isa = PBXGroup;
 			children = (
+				98E847B11E9E1982001972E8 /* CoreLayer */,
 				98E847B31E9E1982001972E8 /* PresentationLayer */,
 				98E847B21E9E1982001972E8 /* ServiceLayer */,
-				98E847B11E9E1982001972E8 /* CoreLayer */,
 				98E847991E9E18D5001972E8 /* AppDelegate.swift */,
 				98E847A01E9E18D5001972E8 /* Assets.xcassets */,
-				98E847A21E9E18D5001972E8 /* LaunchScreen.storyboard */,
 				98E847A51E9E18D5001972E8 /* Info.plist */,
+				98E847A21E9E18D5001972E8 /* LaunchScreen.storyboard */,
 			);
 			path = SOADemo;
 			sourceTree = "<group>";
@@ -151,9 +155,9 @@
 		98E847B11E9E1982001972E8 /* CoreLayer */ = {
 			isa = PBXGroup;
 			children = (
+				98E847C51E9F6C00001972E8 /* ImageStorage */,
 				98C26EEA1EA0EEA500766736 /* Networking */,
 				98E847C61E9F87AA001972E8 /* RequestManager */,
-				98E847C51E9F6C00001972E8 /* ImageStorage */,
 			);
 			path = CoreLayer;
 			sourceTree = "<group>";
@@ -178,9 +182,9 @@
 		98E847BA1E9E5906001972E8 /* ApplicationsViewContrller */ = {
 			isa = PBXGroup;
 			children = (
-				98E847BC1E9E5906001972E8 /* DemoViewController.swift */,
-				98E847BF1E9E5B18001972E8 /* DemoModel.swift */,
 				98C26EFC1EA1079200766736 /* DemoAssembly.swift */,
+				98E847BF1E9E5B18001972E8 /* DemoModel.swift */,
+				98E847BC1E9E5906001972E8 /* DemoViewController.swift */,
 				98C26EFE1EA1091300766736 /* DemoViewController.xib */,
 			);
 			path = ApplicationsViewContrller;
@@ -193,6 +197,7 @@
 				98E847C11E9F64EC001972E8 /* ImageDiskStorage.swift */,
 			);
 			name = ImageStorage;
+			path = ImageStorage;
 			sourceTree = "<group>";
 		};
 		98E847C61E9F87AA001972E8 /* RequestManager */ = {
@@ -202,6 +207,7 @@
 				98C26EF81EA0F6A600766736 /* RequestSender.swift */,
 			);
 			name = RequestManager;
+			path = RequestManager;
 			sourceTree = "<group>";
 		};
 		C684598C7B674160B2F87168 /* Pods */ = {
@@ -366,6 +372,7 @@
 				98E847A31E9E18D5001972E8 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
