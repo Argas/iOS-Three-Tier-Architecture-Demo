@@ -14,12 +14,21 @@ struct CellDisplayModel {
     let imageUrl: String
 }
 
-protocol IDemoModel {
-    func fetchNewApps(completionHandler: @escaping ([CellDisplayModel]?, String?) -> Void)
-    func fetchTopTracks(completionHandler: @escaping ([CellDisplayModel]?, String?) -> Void)
+protocol IDemoModel: class {
+    weak var delegate: IDemoModelDelegate? { get set }
+    func fetchNewApps()
+    func fetchTopTracks()
+}
+
+protocol IDemoModelDelegate: class {
+    func setup(dataSource: [CellDisplayModel])
+    func show(error message: String)
 }
 
 class DemoModel: IDemoModel {
+    
+    weak var delegate: IDemoModelDelegate?
+    
     let appsService:  IAppsService
     let tracksService:  ITracksService
     
@@ -28,17 +37,27 @@ class DemoModel: IDemoModel {
         self.tracksService = tracksService
     }
     
-    func fetchNewApps(completionHandler: @escaping ([CellDisplayModel]?, String?) -> Void) {
+    func fetchNewApps() {
         appsService.loadNewApps { (apps: [AppApiModel]?, error) in
-            let cells = apps?.map({ CellDisplayModel(title: $0.name, imageUrl: $0.iconUrl) })
-            completionHandler(cells, error)
+            
+            if let apps = apps {
+                let cells = apps.map({ CellDisplayModel(title: $0.name, imageUrl: $0.iconUrl) })
+                self.delegate?.setup(dataSource: cells)
+            } else {
+                self.delegate?.show(error: error ?? "Error")
+            }
         }
-        
     }
     
-    func fetchTopTracks(completionHandler: @escaping ([CellDisplayModel]?, String?) -> Void) {        tracksService.loadTopTracks { (tracks: [TrackApiModel]?, errorMessage) in
-            let cells = tracks?.map({ CellDisplayModel(title: $0.name, imageUrl: $0.coverUrl) })
-            completionHandler(cells, errorMessage)
+    func fetchTopTracks() {
+        tracksService.loadTopTracks { (tracks: [TrackApiModel]?, errorMessage) in
+            
+            if let tracks = tracks {
+                let cells = tracks.map({ CellDisplayModel(title: $0.name, imageUrl: $0.coverUrl) })
+                self.delegate?.setup(dataSource: cells)
+            } else {
+                self.delegate?.show(error: errorMessage ?? "Error")
+            }
         }
     }
 

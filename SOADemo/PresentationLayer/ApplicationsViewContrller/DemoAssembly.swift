@@ -11,12 +11,15 @@ import UIKit
 
 class DemoAssembly {
     static var demoViewCotnroller: UIViewController {
-        return DemoViewController(model: model)
+        let model = demoModel()
+        let demoVC = DemoViewController(model: model)
+        model.delegate = demoVC
+        return demoVC
     }
     
     // MARK: - PRIVATE SECTION
     
-    private static var model: IDemoModel {
+    private static func demoModel() -> IDemoModel {
         return DemoModel(appsService: appService,
                          tracksService: tracksService())
     }

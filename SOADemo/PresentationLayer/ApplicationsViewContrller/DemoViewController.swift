@@ -8,14 +8,14 @@
 
 import UIKit
 import PKHUD
+import Kingfisher
 
 enum StoreSegments: Int {
-    case new = 0
-    case topFree
-    case topPaid
+    case newApps = 0
+    case topTracks
 }
 
-class DemoViewController: UIViewController {
+class DemoViewController: UIViewController, IDemoModelDelegate, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -35,18 +35,49 @@ class DemoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //
-        
+        configureTableView()
+        configureSegmentCotnrol()
     }
+    
+    // MARK: - IDemoModelDelegate
+    
+    func setup(dataSource: [CellDisplayModel]) {
+        self.dataSource = dataSource
 
-    private func dataSourceLoaded(dataSource: [CellDisplayModel]?, error: String?) {
         DispatchQueue.main.async {
             HUD.flash(.success, onView: self.view)
-            self.dataSource = dataSource ?? []
-            dataSource?.forEach({ print($0.title )})
+            self.tableView.reloadData()
+        }
+    }
+    
+    func show(error message: String) {
+        DispatchQueue.main.async {
+            HUD.flash(.labeledError(title: message, subtitle: nil), onView: self.view)
         }
     }
 
+    // MARK: - Private methods
+    
+    private func configureSegmentCotnrol() {
+        let items = ["New Apps", "Top Tracks"]
+        segmentControl.removeAllSegments()
+        items.forEach({
+            self.segmentControl.insertSegment(withTitle: $0,
+                                              at: self.segmentControl.numberOfSegments,
+                                              animated: false)
+        })
+        segmentControl.selectedSegmentIndex = 0
+        segmentControlAction(segmentControl)
+    }
+
+    private func configureTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "\(UITableViewCell.self)")
+    }
+    
+    // MARK: - IB ACTIONS
+    
     @IBAction func segmentControlAction(_ sender: UISegmentedControl) {
         guard let segmentIndex = StoreSegments(rawValue: sender.selectedSegmentIndex) else {
             assertionFailure("unknown segment index: \(sender.selectedSegmentIndex)")
@@ -55,13 +86,33 @@ class DemoViewController: UIViewController {
         
         HUD.show(.progress, onView: view)
         switch segmentIndex {
-        case .new:
-            model.fetchNewApps(completionHandler: dataSourceLoaded)
-        case .topFree:
-            model.fetchNewApps(completionHandler: dataSourceLoaded)
-        case .topPaid:
-            model.fetchTopTracks(completionHandler: dataSourceLoaded)
+        case .newApps:
+            model.fetchNewApps()
+        case .topTracks:
+            model.fetchTopTracks()
         }
+    }
+    
+    // MARK: - Table view
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "\(UITableViewCell.self)", for: indexPath)
+        cell.textLabel?.text = dataSource[indexPath.row].title
+        
+        if let imageView = cell.imageView,
+            let url = URL(string: dataSource[indexPath.row].imageUrl) {
+            imageView.kf.setImage(with: url,
+                                  placeholder: UIImage(named: "placeholder"),
+                                  options: nil,
+                                  progressBlock: nil,
+                                  completionHandler: nil)
+        }
+
+        return cell
     }
 }
 
