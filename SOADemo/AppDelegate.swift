@@ -13,11 +13,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    private let rootAssembly = RootAssembly()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let controller = DemoAssembly.demoViewCotnroller
+        let controller = rootAssembly.demoModule.demoViewCotnroller()
         window?.rootViewController = controller
         window?.makeKeyAndVisible()
         
