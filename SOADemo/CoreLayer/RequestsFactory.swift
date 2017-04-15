@@ -11,9 +11,25 @@ import Foundation
 struct RequestsFactory {
     
     struct AppleRSSRequests {
-        static let newAppsConfig = RequestConfig<[AppApiModel]>(request:NewAppsRequest(), parser: AppsParser())
-        static let topPaidAppsConfig = RequestConfig<[AppApiModel]>(request:TopPaidAppsRequest(), parser: AppsParser())
-        static let topFreeAppsConfig = RequestConfig<[AppApiModel]>(request:TopFreeAppsRequest(), parser: AppsParser())
+        
+        static func newAppsConfig() -> RequestConfig<[AppApiModel]> {
+            return RequestConfig<[AppApiModel]>(request:NewAppsRequest(), parser: AppsParser())
+        }
+        
+        static func topPaidAppsConfig() -> RequestConfig<[AppApiModel]> {
+            return RequestConfig<[AppApiModel]>(request:TopPaidAppsRequest(), parser: AppsParser())
+        }
+        
+        static func topFreeAppsConfig() -> RequestConfig<[AppApiModel]> {
+            return RequestConfig<[AppApiModel]>(request:TopFreeAppsRequest(), parser: AppsParser())
+        }
+    }
+    
+    struct LastFMRequests {
+        static func topTracksConfig() -> RequestConfig<[TrackApiModel]> {
+            let request = LastFMTopTracksRequest(apiKey: "d2fc8ba489c03df1a0f1eba71dea6fd9")
+            return RequestConfig<[TrackApiModel]>(request:request, parser: LastFMTracksParser())
+        }
     }
     
 }

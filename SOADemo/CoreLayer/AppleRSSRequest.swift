@@ -9,15 +9,28 @@
 import Foundation
 
 class AppleRSSRequest: IRequest {
-    var command: String {
-        assertionFailure("❌ Should use a subclass of AppleRSSAPI ")
+    fileprivate var command: String {
+        assertionFailure("❌ Should use a subclass of AppleRSSRequest ")
         return ""
     }
-    var baseUrl: String = "https://itunes.apple.com/us/rss/"
-    var limit: String? = "limit=20/"
-    var requestFormat: String? = "json"
-    var getParametrs: [String : Any]? = nil
-    var postParametrsString: String? = nil
+    private var limitString: String {
+        return "limit=\(limit)/"
+    }
+    private var baseUrl: String = "https://itunes.apple.com/us/rss/"
+    private var limit: Int
+    private var requestFormat: String = "json"
+    
+    // MARK: - IRequest
+
+    var urlString: String {
+        return baseUrl + command + limitString + requestFormat
+    }
+    
+    // MARK: - Initialization
+
+    init(limit: Int = 20) {
+        self.limit = limit
+    }
 }
 
 class NewAppsRequest: AppleRSSRequest {

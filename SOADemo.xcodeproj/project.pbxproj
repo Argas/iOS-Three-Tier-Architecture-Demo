@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E1E50CB1EA2199E00093243 /* LastFMTracksRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1E50CA1EA2199E00093243 /* LastFMTracksRequest.swift */; };
+		6E1E50CD1EA2789F00093243 /* LastFMTracksParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1E50CC1EA2789F00093243 /* LastFMTracksParser.swift */; };
+		6E1E50CF1EA28B6500093243 /* TracksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1E50CE1EA28B6500093243 /* TracksService.swift */; };
 		98C26EE91EA0EAF700766736 /* RequestsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C26EE81EA0EAF700766736 /* RequestsFactory.swift */; };
 		98C26EEE1EA0F32100766736 /* IRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C26EED1EA0F32100766736 /* IRequest.swift */; };
 		98C26EF01EA0F34B00766736 /* AppleRSSRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C26EEF1EA0F34B00766736 /* AppleRSSRequest.swift */; };
@@ -30,6 +33,9 @@
 /* Begin PBXFileReference section */
 		175BA27E7B94CD7B3529676D /* Pods_SOADemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SOADemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		638C674D46B4E86D702119AE /* Pods-SOADemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOADemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SOADemo/Pods-SOADemo.release.xcconfig"; sourceTree = "<group>"; };
+		6E1E50CA1EA2199E00093243 /* LastFMTracksRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastFMTracksRequest.swift; sourceTree = "<group>"; };
+		6E1E50CC1EA2789F00093243 /* LastFMTracksParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastFMTracksParser.swift; sourceTree = "<group>"; };
+		6E1E50CE1EA28B6500093243 /* TracksService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksService.swift; sourceTree = "<group>"; };
 		98C26EE81EA0EAF700766736 /* RequestsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestsFactory.swift; sourceTree = "<group>"; };
 		98C26EED1EA0F32100766736 /* IRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRequest.swift; sourceTree = "<group>"; };
 		98C26EEF1EA0F34B00766736 /* AppleRSSRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleRSSRequest.swift; sourceTree = "<group>"; };
@@ -87,6 +93,7 @@
 			children = (
 				98C26EF11EA0F3AA00766736 /* Parser.swift */,
 				98C26EF31EA0F3BA00766736 /* AppsParser.swift */,
+				6E1E50CC1EA2789F00093243 /* LastFMTracksParser.swift */,
 			);
 			name = Parsers;
 			sourceTree = "<group>";
@@ -96,6 +103,7 @@
 			children = (
 				98C26EED1EA0F32100766736 /* IRequest.swift */,
 				98C26EEF1EA0F34B00766736 /* AppleRSSRequest.swift */,
+				6E1E50CA1EA2199E00093243 /* LastFMTracksRequest.swift */,
 			);
 			name = Requests;
 			sourceTree = "<group>";
@@ -146,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				98C26EFA1EA104E300766736 /* AppsService.swift */,
+				6E1E50CE1EA28B6500093243 /* TracksService.swift */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
@@ -231,7 +240,7 @@
 				TargetAttributes = {
 					98E847951E9E18D5001972E8 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 6P37W573QG;
+						DevelopmentTeam = 8D97YLMQE7;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -321,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98C26EFD1EA1079200766736 /* DemoAssembly.swift in Sources */,
+				6E1E50CF1EA28B6500093243 /* TracksService.swift in Sources */,
 				98C26EF41EA0F3BA00766736 /* AppsParser.swift in Sources */,
 				98E847C81E9F88AB001972E8 /* IRequestSender.swift in Sources */,
 				98C26EF01EA0F34B00766736 /* AppleRSSRequest.swift in Sources */,
@@ -332,8 +342,10 @@
 				98C26EF91EA0F6A600766736 /* RequestSender.swift in Sources */,
 				98E847C41E9F6602001972E8 /* IImageStorage.swift in Sources */,
 				98C26EFB1EA104E300766736 /* AppsService.swift in Sources */,
+				6E1E50CB1EA2199E00093243 /* LastFMTracksRequest.swift in Sources */,
 				98E8479A1E9E18D5001972E8 /* AppDelegate.swift in Sources */,
 				98C26EE91EA0EAF700766736 /* RequestsFactory.swift in Sources */,
+				6E1E50CD1EA2789F00093243 /* LastFMTracksParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,7 +404,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -437,7 +449,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -451,7 +463,7 @@
 			baseConfigurationReference = BF91C1FEA6D34F06F9E51F4B /* Pods-SOADemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6P37W573QG;
+				DEVELOPMENT_TEAM = 8D97YLMQE7;
 				INFOPLIST_FILE = SOADemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = argas.SOADemo;
@@ -465,7 +477,7 @@
 			baseConfigurationReference = 638C674D46B4E86D702119AE /* Pods-SOADemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6P37W573QG;
+				DEVELOPMENT_TEAM = 8D97YLMQE7;
 				INFOPLIST_FILE = SOADemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = argas.SOADemo;

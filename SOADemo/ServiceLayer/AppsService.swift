@@ -9,7 +9,9 @@
 import Foundation
 
 protocol IAppsService {
-    func loadNewApps(completionHandler: @escaping ([AppDisplayModel]?, String?) -> Void)
+    func loadNewApps(completionHandler: @escaping ([AppApiModel]?, String?) -> Void)
+    func loadTopFreeApps(completionHandler: @escaping ([AppApiModel]?, String?) -> Void)
+    func loadTopPaidApps(completionHandler: @escaping ([AppApiModel]?, String?) -> Void)
 }
 
 class AppsService: IAppsService {
@@ -20,16 +22,34 @@ class AppsService: IAppsService {
         self.requestSender = requestSender
     }
     
-    func loadNewApps(completionHandler: @escaping ([AppDisplayModel]?, String?) -> Void) {
+    func loadNewApps(completionHandler: @escaping ([AppApiModel]?, String?) -> Void) {
         
-        let requestConfig: RequestConfig<[AppApiModel]> = RequestsFactory.AppleRSSRequests.newAppsConfig
+        let requestConfig: RequestConfig<[AppApiModel]> = RequestsFactory.AppleRSSRequests.newAppsConfig()
         
+        loadApps(requestConfig: requestConfig, completionHandler: completionHandler)
+    }
+    
+    func loadTopFreeApps(completionHandler: @escaping ([AppApiModel]?, String?) -> Void) {
+        
+        let requestConfig: RequestConfig<[AppApiModel]> = RequestsFactory.AppleRSSRequests.topFreeAppsConfig()
+        
+        loadApps(requestConfig: requestConfig, completionHandler: completionHandler)
+    }
+    
+    func loadTopPaidApps(completionHandler: @escaping ([AppApiModel]?, String?) -> Void) {
+        
+        let requestConfig: RequestConfig<[AppApiModel]> = RequestsFactory.AppleRSSRequests.newAppsConfig()
+        
+        loadApps(requestConfig: requestConfig, completionHandler: completionHandler)
+    }
+    
+    private func loadApps(requestConfig: RequestConfig<[AppApiModel]>,
+                          completionHandler: @escaping ([AppApiModel]?, String?) -> Void) {
         requestSender.send(config: requestConfig) { (result: Result<[AppApiModel]>) in
             
             switch result {
             case .Success(let apps):
-                let appDisplayModels = apps.map({ AppDisplayModel(title: $0.name, imageUrl: $0.iconUrl) })
-                completionHandler(appDisplayModels, nil)
+                completionHandler(apps, nil)
             case .Fail(let error):
                 completionHandler(nil, error)
             }

@@ -11,8 +11,8 @@ import PKHUD
 
 enum StoreSegments: Int {
     case new = 0
-    case topPaid
     case topFree
+    case topPaid
 }
 
 class DemoViewController: UIViewController {
@@ -20,7 +20,7 @@ class DemoViewController: UIViewController {
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
-    private let dataSource: [AppDisplayModel] = []
+    private var dataSource: [CellDisplayModel] = []
     private let model: IDemoModel
     
     init(model: IDemoModel) {
@@ -39,10 +39,11 @@ class DemoViewController: UIViewController {
         
     }
 
-    private func appsLoaded(apps: [AppDisplayModel]?, error: String?) {
+    private func dataSourceLoaded(dataSource: [CellDisplayModel]?, error: String?) {
         DispatchQueue.main.async {
             HUD.flash(.success, onView: self.view)
-            apps?.forEach({ print($0.title )})
+            self.dataSource = dataSource ?? []
+            dataSource?.forEach({ print($0.title )})
         }
     }
 
@@ -55,11 +56,11 @@ class DemoViewController: UIViewController {
         HUD.show(.progress, onView: view)
         switch segmentIndex {
         case .new:
-            model.fetchNewApps(completionHandler: appsLoaded)
+            model.fetchNewApps(completionHandler: dataSourceLoaded)
         case .topFree:
-            model.fetchNewApps(completionHandler: appsLoaded)
+            model.fetchNewApps(completionHandler: dataSourceLoaded)
         case .topPaid:
-            model.fetchNewApps(completionHandler: appsLoaded)
+            model.fetchTopTracks(completionHandler: dataSourceLoaded)
         }
     }
 }

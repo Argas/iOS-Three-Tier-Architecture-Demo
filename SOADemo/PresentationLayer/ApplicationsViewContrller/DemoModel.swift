@@ -9,24 +9,37 @@
 import UIKit
 import Foundation
 
-struct AppDisplayModel {
+struct CellDisplayModel {
     let title: String
     let imageUrl: String
 }
 
 protocol IDemoModel {
-    func fetchNewApps(completionHandler: @escaping ([AppDisplayModel]?, String?) -> Void)
+    func fetchNewApps(completionHandler: @escaping ([CellDisplayModel]?, String?) -> Void)
+    func fetchTopTracks(completionHandler: @escaping ([CellDisplayModel]?, String?) -> Void)
 }
 
 class DemoModel: IDemoModel {
     let appsService:  IAppsService
+    let tracksService:  ITracksService
     
-    init(appsService: IAppsService) {
+    init(appsService: IAppsService, tracksService: ITracksService) {
         self.appsService = appsService
+        self.tracksService = tracksService
     }
     
-    func fetchNewApps(completionHandler: @escaping ([AppDisplayModel]?, String?) -> Void) {
-        //
+    func fetchNewApps(completionHandler: @escaping ([CellDisplayModel]?, String?) -> Void) {
+        appsService.loadNewApps { (apps: [AppApiModel]?, error) in
+            let cells = apps?.map({ CellDisplayModel(title: $0.name, imageUrl: $0.iconUrl) })
+            completionHandler(cells, error)
+        }
+        
+    }
+    
+    func fetchTopTracks(completionHandler: @escaping ([CellDisplayModel]?, String?) -> Void) {        tracksService.loadTopTracks { (tracks: [TrackApiModel]?, errorMessage) in
+            let cells = tracks?.map({ CellDisplayModel(title: $0.name, imageUrl: $0.coverUrl) })
+            completionHandler(cells, errorMessage)
+        }
     }
 
 }

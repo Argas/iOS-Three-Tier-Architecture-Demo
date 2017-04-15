@@ -7,5 +7,6 @@ target 'SOADemo' do
 
   # Pods for SOADemo
   pod 'PKHUD', '~> 4.0'
+  pod 'SwiftyJSON'
 
 end

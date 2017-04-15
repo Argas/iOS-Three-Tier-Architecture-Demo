@@ -21,12 +21,7 @@ class RequestSender: IRequestSender {
             return
         }
         
-        var urlRequest = URLRequest(url: url)
-        
-        if let postParametrsStrings = config.request.postParametrsString {
-            urlRequest.httpMethod = "POST"
-            urlRequest.httpBody = postParametrsStrings.data(using: .utf8)
-        }
+        let urlRequest = URLRequest(url: url)
         
         let task = session.dataTask(with: urlRequest) { (data: Data?, response: URLResponse?, error: Error?) in
             if let error = error {

@@ -17,7 +17,12 @@ class DemoAssembly {
     // MARK: - PRIVATE SECTION
     
     private static var model: IDemoModel {
-        return DemoModel(appsService: appService)
+        return DemoModel(appsService: appService,
+                         tracksService: tracksService())
+    }
+    
+    private static func tracksService() -> ITracksService {
+        return TracksService(requestSender: requestSender)
     }
     
     private static var appService: IAppsService {
