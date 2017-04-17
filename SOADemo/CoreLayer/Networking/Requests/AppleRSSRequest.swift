@@ -22,8 +22,13 @@ class AppleRSSRequest: IRequest {
     
     // MARK: - IRequest
 
-    var urlString: String {
-        return baseUrl + command + limitString + requestFormat
+    var urlRequest: URLRequest? {
+        let urlString: String = baseUrl + command + limitString + requestFormat
+        if let url = URL(string: urlString) {
+            return URLRequest(url: url)
+        }
+        
+        return nil
     }
     
     // MARK: - Initialization

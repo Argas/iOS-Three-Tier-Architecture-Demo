@@ -20,12 +20,18 @@ class LastFMTopTracksRequest: IRequest {
                 "api_key": apiKey,
                 "format" : "json"]
     }
+    private var urlString: String {
+        let getParams = getParameters.flatMap({ "\($0.key)=\($0.value)"}).joined(separator: "&")
+        return baseUrl + apiVersion + "?" + getParams
+    }
     
     // MARK: - IRequest
     
-    var urlString: String {
-        let getParams = getParameters.flatMap({ "\($0.key)=\($0.value)"}).joined(separator: "&")
-        return baseUrl + apiVersion + "?" + getParams
+    var urlRequest: URLRequest? {
+        if let url = URL(string: urlString) {
+            return URLRequest(url: url)
+        }
+        return nil
     }
     
     // MARK: - Initialization

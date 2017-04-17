@@ -14,14 +14,10 @@ class RequestSender: IRequestSender {
     
     func send<T>(config: RequestConfig<T>, completionHandler: @escaping (Result<T>) -> Void) {
         
-        print("=== Request URL: \(config.request.urlString)")
-        
-        guard let url = URL(string: config.request.urlString) else {
+        guard let urlRequest = config.request.urlRequest else {
             completionHandler(Result.Fail("url string can't be parser to URL"))
             return
         }
-        
-        let urlRequest = URLRequest(url: url)
         
         let task = session.dataTask(with: urlRequest) { (data: Data?, response: URLResponse?, error: Error?) in
             if let error = error {
