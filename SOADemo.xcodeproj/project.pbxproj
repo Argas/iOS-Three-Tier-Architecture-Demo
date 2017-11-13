@@ -14,7 +14,7 @@
 		98C26EE91EA0EAF700766736 /* RequestsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C26EE81EA0EAF700766736 /* RequestsFactory.swift */; };
 		98C26EEE1EA0F32100766736 /* IRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C26EED1EA0F32100766736 /* IRequest.swift */; };
 		98C26EF01EA0F34B00766736 /* AppleRSSRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C26EEF1EA0F34B00766736 /* AppleRSSRequest.swift */; };
-		98C26EF21EA0F3AA00766736 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C26EF11EA0F3AA00766736 /* Parser.swift */; };
+		98C26EF21EA0F3AA00766736 /* IParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C26EF11EA0F3AA00766736 /* IParser.swift */; };
 		98C26EF41EA0F3BA00766736 /* AppsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C26EF31EA0F3BA00766736 /* AppsParser.swift */; };
 		98C26EF91EA0F6A600766736 /* RequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C26EF81EA0F6A600766736 /* RequestSender.swift */; };
 		98C26EFB1EA104E300766736 /* AppsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C26EFA1EA104E300766736 /* AppsService.swift */; };
@@ -41,7 +41,7 @@
 		98C26EE81EA0EAF700766736 /* RequestsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestsFactory.swift; sourceTree = "<group>"; };
 		98C26EED1EA0F32100766736 /* IRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRequest.swift; sourceTree = "<group>"; };
 		98C26EEF1EA0F34B00766736 /* AppleRSSRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleRSSRequest.swift; sourceTree = "<group>"; };
-		98C26EF11EA0F3AA00766736 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		98C26EF11EA0F3AA00766736 /* IParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IParser.swift; sourceTree = "<group>"; };
 		98C26EF31EA0F3BA00766736 /* AppsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppsParser.swift; sourceTree = "<group>"; };
 		98C26EF81EA0F6A600766736 /* RequestSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestSender.swift; sourceTree = "<group>"; };
 		98C26EFA1EA104E300766736 /* AppsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppsService.swift; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 		98C26EEB1EA0EEB200766736 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
-				98C26EF11EA0F3AA00766736 /* Parser.swift */,
+				98C26EF11EA0F3AA00766736 /* IParser.swift */,
 				98C26EF31EA0F3BA00766736 /* AppsParser.swift */,
 				6E1E50CC1EA2789F00093243 /* LastFMTracksParser.swift */,
 			);
@@ -294,9 +294,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SOADemo/Pods-SOADemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -324,13 +331,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SOADemo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -345,7 +355,7 @@
 				98C26EF41EA0F3BA00766736 /* AppsParser.swift in Sources */,
 				98E847C81E9F88AB001972E8 /* IRequestSender.swift in Sources */,
 				98C26EF01EA0F34B00766736 /* AppleRSSRequest.swift in Sources */,
-				98C26EF21EA0F3AA00766736 /* Parser.swift in Sources */,
+				98C26EF21EA0F3AA00766736 /* IParser.swift in Sources */,
 				98E847BE1E9E5906001972E8 /* DemoViewController.swift in Sources */,
 				98E847C01E9E5B18001972E8 /* DemoModel.swift in Sources */,
 				98C26EEE1EA0F32100766736 /* IRequest.swift in Sources */,

@@ -14,8 +14,10 @@ struct AppApiModel {
     let iconUrl: String
 }
 
-class AppsParser: Parser<[AppApiModel]> {
-    override func parse(data: Data) -> [AppApiModel]? {
+class AppsParser: IParser {
+    typealias Model = [AppApiModel]
+
+    func parse(data: Data) -> [AppApiModel]? {
         // parse the result as JSON, since that's what the API provides
         do {
             guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] else {

@@ -12,23 +12,23 @@ struct RequestsFactory {
     
     struct AppleRSSRequests {
         
-        static func newAppsConfig() -> RequestConfig<[AppApiModel]> {
-            return RequestConfig<[AppApiModel]>(request:NewAppsRequest(), parser: AppsParser())
+        static func newAppsConfig() -> RequestConfig<AppsParser> {
+            return RequestConfig<AppsParser>(request:NewAppsRequest(), parser: AppsParser())
         }
         
-        static func topPaidAppsConfig() -> RequestConfig<[AppApiModel]> {
-            return RequestConfig<[AppApiModel]>(request:TopPaidAppsRequest(), parser: AppsParser())
+        static func topPaidAppsConfig() -> RequestConfig<AppsParser> {
+            return RequestConfig<AppsParser>(request:TopPaidAppsRequest(), parser: AppsParser())
         }
         
-        static func topFreeAppsConfig() -> RequestConfig<[AppApiModel]> {
-            return RequestConfig<[AppApiModel]>(request:TopFreeAppsRequest(), parser: AppsParser())
+        static func topFreeAppsConfig() -> RequestConfig<AppsParser> {
+            return RequestConfig<AppsParser>(request:TopFreeAppsRequest(), parser: AppsParser())
         }
     }
     
     struct LastFMRequests {
-        static func topTracksConfig() -> RequestConfig<[TrackApiModel]> {
+        static func topTracksConfig() -> RequestConfig<LastFMTracksParser> {
             let request = LastFMTopTracksRequest(apiKey: "d2fc8ba489c03df1a0f1eba71dea6fd9")
-            return RequestConfig<[TrackApiModel]>(request:request, parser: LastFMTracksParser())
+            return RequestConfig<LastFMTracksParser>(request:request, parser: LastFMTracksParser())
         }
     }
     

@@ -24,33 +24,33 @@ class AppsService: IAppsService {
     
     func loadNewApps(completionHandler: @escaping ([AppApiModel]?, String?) -> Void) {
         
-        let requestConfig: RequestConfig<[AppApiModel]> = RequestsFactory.AppleRSSRequests.newAppsConfig()
+        let requestConfig = RequestsFactory.AppleRSSRequests.newAppsConfig()
         
         loadApps(requestConfig: requestConfig, completionHandler: completionHandler)
     }
     
     func loadTopFreeApps(completionHandler: @escaping ([AppApiModel]?, String?) -> Void) {
         
-        let requestConfig: RequestConfig<[AppApiModel]> = RequestsFactory.AppleRSSRequests.topFreeAppsConfig()
+        let requestConfig = RequestsFactory.AppleRSSRequests.topFreeAppsConfig()
         
         loadApps(requestConfig: requestConfig, completionHandler: completionHandler)
     }
     
     func loadTopPaidApps(completionHandler: @escaping ([AppApiModel]?, String?) -> Void) {
         
-        let requestConfig: RequestConfig<[AppApiModel]> = RequestsFactory.AppleRSSRequests.newAppsConfig()
+        let requestConfig = RequestsFactory.AppleRSSRequests.newAppsConfig()
         
         loadApps(requestConfig: requestConfig, completionHandler: completionHandler)
     }
     
-    private func loadApps(requestConfig: RequestConfig<[AppApiModel]>,
+    private func loadApps(requestConfig: RequestConfig<AppsParser>,
                           completionHandler: @escaping ([AppApiModel]?, String?) -> Void) {
-        requestSender.send(config: requestConfig) { (result: Result<[AppApiModel]>) in
+        requestSender.send(requestConfig: requestConfig) { (result: Result<[AppApiModel]>) in
             
             switch result {
-            case .Success(let apps):
+            case .success(let apps):
                 completionHandler(apps, nil)
-            case .Fail(let error):
+            case .error(let error):
                 completionHandler(nil, error)
             }
         }

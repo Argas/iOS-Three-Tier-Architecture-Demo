@@ -21,13 +21,13 @@ class TracksService: ITracksService {
     }
     
     func loadTopTracks(completionHandler: @escaping ([TrackApiModel]?, String?) -> Void) {
-        let requestConfig: RequestConfig<[TrackApiModel]> = RequestsFactory.LastFMRequests.topTracksConfig()
+        let requestConfig = RequestsFactory.LastFMRequests.topTracksConfig()
         
-        requestSender.send(config: requestConfig) { (result: Result<[TrackApiModel]>) in
+        requestSender.send(requestConfig: requestConfig) { (result: Result<[TrackApiModel]>) in
             switch result {
-            case .Success(let tracks):
+            case .success(let tracks):
                 completionHandler(tracks, nil)
-            case .Fail(let error):
+            case .error(let error):
                 completionHandler(nil, error)
             }
         }

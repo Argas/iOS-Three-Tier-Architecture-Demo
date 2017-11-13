@@ -8,17 +8,17 @@
 
 import Foundation
 
-struct RequestConfig<T> {
+struct RequestConfig<Parser> where Parser: IParser {
     let request: IRequest
-    let parser: Parser<T>
+    let parser: Parser
 }
 
-enum Result<T> {
-    case Success(T)
-    case Fail(String)
+enum Result<Model> {
+    case success(Model)
+    case error(String)
 }
 
 protocol IRequestSender {
-    func send<T>(config: RequestConfig<T>, completionHandler: @escaping (Result<T>) -> Void)
+    func send<Parser>(requestConfig: RequestConfig<Parser>,
+                      completionHandler: @escaping(Result<Parser.Model>) -> Void)
 }
-
