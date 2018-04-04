@@ -17,14 +17,20 @@ enum StoreSegments: Int {
 
 class DemoViewController: UIViewController, IDemoModelDelegate, UITableViewDataSource, UITableViewDelegate {
 
+    // UI
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
-    private var dataSource: [CellDisplayModel] = []
+    // Dependencies
+    private let presentationAssembly: IPresentationAssembly
     private let model: IDemoModel
+
+    // DeisplayModel
+    private var dataSource: [CellDisplayModel] = []
     
-    init(model: IDemoModel) {
+    init(model: IDemoModel, presentationAssembly: IPresentationAssembly) {
         self.model = model
+        self.presentationAssembly = presentationAssembly
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -113,6 +119,11 @@ class DemoViewController: UIViewController, IDemoModelDelegate, UITableViewDataS
         }
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let pinguinViewController = presentationAssembly.pinguinViewController()
+        self.navigationController?.pushViewController(pinguinViewController, animated: true)
     }
 }
 

@@ -13,6 +13,7 @@
 		6E1E50D21EA2E1FA00093243 /* RootAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1E50D11EA2E1FA00093243 /* RootAssembly.swift */; };
 		987F51142074B6DB009F0823 /* ServicesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987F51132074B6DB009F0823 /* ServicesAssembly.swift */; };
 		987F51182074BAD8009F0823 /* CoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987F51172074BAD8009F0823 /* CoreAssembly.swift */; };
+		987F51202074CB8B009F0823 /* PinguinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987F511F2074CB8B009F0823 /* PinguinViewController.swift */; };
 		98C26EE91EA0EAF700766736 /* RequestsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C26EE81EA0EAF700766736 /* RequestsFactory.swift */; };
 		98C26EEE1EA0F32100766736 /* IRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C26EED1EA0F32100766736 /* IRequest.swift */; };
 		98C26EF01EA0F34B00766736 /* AppleRSSRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C26EEF1EA0F34B00766736 /* AppleRSSRequest.swift */; };
@@ -42,6 +43,7 @@
 		6E1E50D11EA2E1FA00093243 /* RootAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootAssembly.swift; path = ../RootAssembly.swift; sourceTree = "<group>"; };
 		987F51132074B6DB009F0823 /* ServicesAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesAssembly.swift; sourceTree = "<group>"; };
 		987F51172074BAD8009F0823 /* CoreAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAssembly.swift; sourceTree = "<group>"; };
+		987F511F2074CB8B009F0823 /* PinguinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinguinViewController.swift; sourceTree = "<group>"; };
 		98C26EE81EA0EAF700766736 /* RequestsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestsFactory.swift; sourceTree = "<group>"; };
 		98C26EED1EA0F32100766736 /* IRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRequest.swift; sourceTree = "<group>"; };
 		98C26EEF1EA0F34B00766736 /* AppleRSSRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleRSSRequest.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 		6E1E50D01EA29FFB00093243 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				987F511E2074CB56009F0823 /* PinguinsViewController */,
 				98E847BA1E9E5906001972E8 /* ApplicationsViewContrller */,
 			);
 			path = Modules;
@@ -92,9 +95,61 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		987F51192074C70A009F0823 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				987F51132074B6DB009F0823 /* ServicesAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		987F511A2074C718009F0823 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				98C26EFC1EA1079200766736 /* PresentationAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		987F511B2074C71F009F0823 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				987F51172074BAD8009F0823 /* CoreAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		987F511C2074C738009F0823 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				98C26EFA1EA104E300766736 /* AppsService.swift */,
+				6E1E50CE1EA28B6500093243 /* TracksService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		987F511D2074C769009F0823 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				98E847A01E9E18D5001972E8 /* Assets.xcassets */,
+				98E847A51E9E18D5001972E8 /* Info.plist */,
+				98E847A21E9E18D5001972E8 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		987F511E2074CB56009F0823 /* PinguinsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				987F511F2074CB8B009F0823 /* PinguinViewController.swift */,
+			);
+			path = PinguinsViewController;
+			sourceTree = "<group>";
+		};
 		98C26EEA1EA0EEA500766736 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				98E847C61E9F87AA001972E8 /* RequestManager */,
 				98C26EEB1EA0EEB200766736 /* Parsers */,
 				98C26EEC1EA0EED700766736 /* Requests */,
 				98C26EE81EA0EAF700766736 /* RequestsFactory.swift */,
@@ -143,46 +198,42 @@
 		98E847981E9E18D5001972E8 /* SOADemo */ = {
 			isa = PBXGroup;
 			children = (
-				98E847B31E9E1982001972E8 /* PresentationLayer */,
-				98E847B21E9E1982001972E8 /* ServiceLayer */,
-				98E847B11E9E1982001972E8 /* CoreLayer */,
+				98E847B31E9E1982001972E8 /* 1. PresentationLayer */,
+				98E847B21E9E1982001972E8 /* 2. ServiceLayer */,
+				98E847B11E9E1982001972E8 /* 3. CoreLayer */,
 				98E847991E9E18D5001972E8 /* AppDelegate.swift */,
 				6E1E50D11EA2E1FA00093243 /* RootAssembly.swift */,
-				98E847A01E9E18D5001972E8 /* Assets.xcassets */,
-				98E847A51E9E18D5001972E8 /* Info.plist */,
-				98E847A21E9E18D5001972E8 /* LaunchScreen.storyboard */,
+				987F511D2074C769009F0823 /* Supporting Files */,
 			);
 			path = SOADemo;
 			sourceTree = "<group>";
 		};
-		98E847B11E9E1982001972E8 /* CoreLayer */ = {
+		98E847B11E9E1982001972E8 /* 3. CoreLayer */ = {
 			isa = PBXGroup;
 			children = (
+				987F511B2074C71F009F0823 /* Assembly */,
 				98E847C51E9F6C00001972E8 /* ImageStorage */,
 				98C26EEA1EA0EEA500766736 /* Networking */,
-				98E847C61E9F87AA001972E8 /* RequestManager */,
-				987F51172074BAD8009F0823 /* CoreAssembly.swift */,
 			);
-			path = CoreLayer;
+			path = "3. CoreLayer";
 			sourceTree = "<group>";
 		};
-		98E847B21E9E1982001972E8 /* ServiceLayer */ = {
+		98E847B21E9E1982001972E8 /* 2. ServiceLayer */ = {
 			isa = PBXGroup;
 			children = (
-				987F51132074B6DB009F0823 /* ServicesAssembly.swift */,
-				98C26EFA1EA104E300766736 /* AppsService.swift */,
-				6E1E50CE1EA28B6500093243 /* TracksService.swift */,
+				987F51192074C70A009F0823 /* Assembly */,
+				987F511C2074C738009F0823 /* Services */,
 			);
-			path = ServiceLayer;
+			path = "2. ServiceLayer";
 			sourceTree = "<group>";
 		};
-		98E847B31E9E1982001972E8 /* PresentationLayer */ = {
+		98E847B31E9E1982001972E8 /* 1. PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
-				98C26EFC1EA1079200766736 /* PresentationAssembly.swift */,
+				987F511A2074C718009F0823 /* Assembly */,
 				6E1E50D01EA29FFB00093243 /* Modules */,
 			);
-			path = PresentationLayer;
+			path = "1. PresentationLayer";
 			sourceTree = "<group>";
 		};
 		98E847BA1E9E5906001972E8 /* ApplicationsViewContrller */ = {
@@ -257,7 +308,7 @@
 				TargetAttributes = {
 					98E847951E9E18D5001972E8 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 8D97YLMQE7;
+						DevelopmentTeam = 6P37W573QG;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -363,6 +414,7 @@
 				98C26EF01EA0F34B00766736 /* AppleRSSRequest.swift in Sources */,
 				98C26EF21EA0F3AA00766736 /* IParser.swift in Sources */,
 				98E847BE1E9E5906001972E8 /* DemoViewController.swift in Sources */,
+				987F51202074CB8B009F0823 /* PinguinViewController.swift in Sources */,
 				98E847C01E9E5B18001972E8 /* DemoModel.swift in Sources */,
 				98C26EEE1EA0F32100766736 /* IRequest.swift in Sources */,
 				98E847C21E9F64EC001972E8 /* ImageDiskStorage.swift in Sources */,
@@ -494,8 +546,8 @@
 			baseConfigurationReference = BF91C1FEA6D34F06F9E51F4B /* Pods-SOADemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8D97YLMQE7;
-				INFOPLIST_FILE = SOADemo/Info.plist;
+				DEVELOPMENT_TEAM = 6P37W573QG;
+				INFOPLIST_FILE = "$(SRCROOT)/SOADemo/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = argas.SOADemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -508,8 +560,8 @@
 			baseConfigurationReference = 638C674D46B4E86D702119AE /* Pods-SOADemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8D97YLMQE7;
-				INFOPLIST_FILE = SOADemo/Info.plist;
+				DEVELOPMENT_TEAM = 6P37W573QG;
+				INFOPLIST_FILE = "$(SRCROOT)/SOADemo/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = argas.SOADemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
