@@ -19,7 +19,8 @@ class LastFMTracksParser: IParser {
     typealias Model = [TrackApiModel]
     
     func parse(data: Data) -> [TrackApiModel]? {
-        let json = JSON(data: data)
+        
+        let json = JSON(data)
         guard let tracks = json["tracks"]["track"].array else {
             return nil
         }
